@@ -7,8 +7,8 @@ namespace Tests
 {
     /// <summary>
     /// This tests demonstrate how to use asynchronous programming in C# using delegates. 
-    /// This code is mostly legacy and doesn't supported in modern .NET Core.
-    /// </summary>
+    /// This code is mostly legacy and isn't supported in modern .NET Core.
+    /// </summary> 
     [TestClass]
     public class DelegatesTests
     {
@@ -21,7 +21,7 @@ namespace Tests
         }
 
         /// <summary>
-        /// A simple method that simulating work.
+        /// A simple method that simulates work.
         /// </summary>
         private void DoHardWork()
         {
