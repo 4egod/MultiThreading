@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -31,6 +32,23 @@ namespace Tests
 
             Debug.WriteLine("\nUsing a lambda expression:");
             Parallel.For(0, range, (ix) => { Debug.Write(ix + " "); });
+        }
+
+        /// <summary>
+        /// This example demonstrates implementing a parallel for each loop.
+        /// </summary>
+        [DataTestMethod]
+        [DataRow(100)]
+        public void TestParallelForEach(int range)
+        {
+            var numbers = new List<int>(range);
+
+            for (int ix = 0; ix < range; ix++)
+            {
+                numbers.Add(ix);
+            }
+
+            Parallel.ForEach<int>(numbers, (ix) => { Debug.Write(ix + " "); });
         }
     }
 }
