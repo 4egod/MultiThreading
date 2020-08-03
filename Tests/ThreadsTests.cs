@@ -435,7 +435,7 @@ namespace Tests
                     // ...
                     throw null; // The NullReferenceException will get caught below
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // Typically log the exception, and/or signal another thread that we've stuck
                 }
@@ -444,7 +444,8 @@ namespace Tests
             // Wrong way
             try
             {
-                new Thread(() => throw null).Start();
+                // This will throw unhandled exception.
+                //new Thread(() => throw null).Start();
             }
             catch
             {
