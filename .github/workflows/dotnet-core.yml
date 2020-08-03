@@ -1,2 +1,17 @@
-- name: Setup VSTest Console
-  uses: MohammadNeisianiTR/VSTestAction@v1
+name: Display MsTest helper
+
+on:
+  push:
+    branches:
+      - '**' 
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: setup-msbuild
+        uses: microsoft/setup-msbuild@v1
+
+      - name: Run a one-line script
+        run:  '& "$(vswhere -property installationPath)\Common7\IDE\MSTest.exe" /help'
