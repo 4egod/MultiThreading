@@ -475,5 +475,23 @@ namespace Tests
 
             Debug.WriteLine($"End of main thread (Thread ID: {Thread.CurrentThread.ManagedThreadId})");
         }
+
+        /// <summary>
+        /// Use static variable as a thread-local for each thread. Each thread then sees a separate copy of local.
+        /// </summary>
+        [ThreadStatic]
+        private static int local;
+
+        private static int shared;
+
+        [TestMethod]
+        public void TestThreadLocalFields()
+        {
+            // Assign data in the first thread.
+            new Thread(() => local = shared = 7).Start();
+
+            // Print data in the second one.
+            new Thread(() => Debug.WriteLine($"Local: {local}\nShared: {shared}")).Start();
+        }
     }
 }
