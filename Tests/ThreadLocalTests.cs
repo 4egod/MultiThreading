@@ -19,7 +19,7 @@ namespace Tests
         private ThreadLocal<int> threadLocalInstance = new ThreadLocal<int>(() => 7);
 
         [TestMethod]
-        public void TestThreadLocal(int value)
+        public void TestThreadLocal()
         {
             // Try to change staic field.
             new Thread(() => threadLocalInstance.Value = 77).Start();
